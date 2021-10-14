@@ -1,19 +1,19 @@
-
+package main
 
 import "container/heap"
 
 type IntHeap []int
 
-func (h IntHeap) Len() int  { return len(h) }
-func (h IntHeap) Less(i, j int) bool { return h[i] < h[j] }
-func (h IntHeap) Swap(i, j int)  {h[i], h[j] = h[j], h[i]}
-func (h *IntHeap) Push(x interface{}) {*h = append(*h, x.(int))}
+func (h IntHeap) Len() int            { return len(h) }
+func (h IntHeap) Less(i, j int) bool  { return h[i] < h[j] }
+func (h IntHeap) Swap(i, j int)       { h[i], h[j] = h[j], h[i] }
+func (h *IntHeap) Push(x interface{}) { *h = append(*h, x.(int)) }
 
 func (h *IntHeap) Pop() interface{} {
 	old := *h
 	n := len(old)
 	x := old[n-1]
-	*h = old[0:n-1]
+	*h = old[0 : n-1]
 	return x
 }
 
@@ -22,11 +22,10 @@ type KthLargest struct {
 	K    int
 }
 
-
 func Constructor(k int, nums []int) KthLargest {
 	h := &IntHeap{}
 	heap.Init(h)
-	for i:=0;i<len(nums);i++ {
+	for i := 0; i < len(nums); i++ {
 		heap.Push(h, nums[i])
 	}
 	for len(*h) > k {
@@ -34,7 +33,6 @@ func Constructor(k int, nums []int) KthLargest {
 	}
 	return KthLargest{h, k}
 }
-
 
 func (this *KthLargest) Add(val int) int {
 	if len(*this.Nums) < this.K {
@@ -45,7 +43,6 @@ func (this *KthLargest) Add(val int) int {
 	}
 	return (*this.Nums)[0]
 }
-
 
 /**
  * Your KthLargest object will be instantiated and called as such:

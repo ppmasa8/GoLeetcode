@@ -1,15 +1,17 @@
+package main
+
 func isValid(s string) bool {
 	stack := make([]rune, 0)
-	m := map[rune]rune {
+	m := map[rune]rune{
 		')': '(',
 		']': '[',
 		'}': '{',
 	}
 	for _, v := range s {
 		switch v {
-		case '(', '{', '[' :
+		case '(', '{', '[':
 			stack = append(stack, v)
-		case ')', '}', ']' :
+		case ')', '}', ']':
 			if len(stack) == 0 || stack[len(stack)-1] != m[v] {
 				return false
 			}

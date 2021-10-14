@@ -1,3 +1,5 @@
+package main
+
 /**
  * Definition for singly-linked list.
  * type ListNode struct {
@@ -8,7 +10,9 @@
 
 // Two pointers solution
 func hasCycle(head *ListNode) bool {
-	if head == nil || head.Next == nil { return false }
+	if head == nil || head.Next == nil {
+		return false
+	}
 	fast, slow := head, head
 	for fast != nil {
 		if fast.Next != nil {
