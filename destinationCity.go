@@ -1,12 +1,12 @@
 func destCity(paths [][]string) string {
-  map := map[string]bool {}
+  m := map[string]bool {}
 
   for _, v := range paths {
-    map[v[0]] = true
+    m[v[0]] = true
   }
 
   for _, v := range paths {
-    _, ok := map[v[1]]
+    _, ok := m[v[1]]
     if !ok {
       return v[1]
     }
