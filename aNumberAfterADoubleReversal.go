@@ -3,9 +3,5 @@ func isSameAfterReversals(num int) bool {
         return true
     }
     
-    if num % 10 == 0 {
-        return false
-    } else {
-        return true
-    }
+    return num % 10 != 0
 }
